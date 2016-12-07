@@ -2,6 +2,7 @@ package com.feicuiedu.android.servicesdemo;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +20,6 @@ public class MainActivity extends AppCompatActivity {
         Uri uri = Uri.parse(strUri);
 
         ContentResolver cr = getContentResolver();
-        ContentValues contentValues = new ContentValues();
-        /*contentValues.put("id","1");
-        contentValues.put("name","sky");*/
-
-        contentValues.put("id","2");
-        contentValues.put("name","moon");
 
         // Cursor cursor = cr.query(uri,null,"id=? ",new String[]{"1"},null);
         Cursor cursor = cr.query(uri,null,null,null,null);
@@ -37,5 +32,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         cursor.close();
+
+
     }
 }

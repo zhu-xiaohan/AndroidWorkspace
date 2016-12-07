@@ -6,12 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by chenyan on 2016/12/7.
  */
 
 public class MyContentProvider extends ContentProvider {
+
+    private static final String TAG = "MyContentProvider";
 
     private DBHandler dbh = null;
     @Override
@@ -21,12 +24,20 @@ public class MyContentProvider extends ContentProvider {
         return true;
     }
 
-    @Nullable
+    /**
+     *
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
+     */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         StringBuilder sbProjection = new StringBuilder();
-        if (sbProjection != null && sbProjection.length()>0) {
+        if (projection != null && projection.length>0) {
             for (String strProj : projection) {
                 sbProjection.append(strProj).append(",");
             }
@@ -42,22 +53,25 @@ public class MyContentProvider extends ContentProvider {
         else {
             selection = "and " + selection;
         }
-        Cursor cursor = dbh.getReadableDatabase().rawQuery(" select " + sbProjection.toString() + " from user_ where 1= 1 " +selection ,selectionArgs);
+
+        String sql = " select " + sbProjection.toString() + " from user_ where 1= 1 " +selection;
+        Log.d(TAG, "query: "+sql);
+        Cursor cursor = dbh.getReadableDatabase().rawQuery(sql ,selectionArgs);
         return cursor;
     }
 
-    @Nullable
     @Override
     public String getType(Uri uri) {
         return null;
     }
 
-    @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
         SQLiteDatabase db =dbh.getWritableDatabase();
 
+        String sql = "insert into user_(id,name) values ("+values.getAsString("id")+","+values.getAsString("name")+")";
+        Log.d(TAG, "insert: "+sql);
         db.execSQL("insert into user_(id,name) values (?,?)",new String[]{values.getAsString("id"),values.getAsString("name")});
 
         return null;
