@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,10 +35,16 @@ import java.util.List;
 import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private ListView lv;
     private List<Map<String, String>> list = new ArrayList<Map<String, String>>();
     private Map<String, String> paramMap = new HashMap<String, String>();
@@ -167,6 +174,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Map<String, String>> getData() {
+
+        //  yibu  shagnchuan xiazai  gaobingfa
+
+
+        url = "http://118.244.212.82:9092/newsClient/news_list?ver=1&subid=1&dir=1&nid=1&stamp=20140321&cnt=20";
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        final okhttp3.Request request = new okhttp3.Request.Builder()
+                .url(url)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure() e=" + e);
+            }
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                Log.i(TAG, " onResponse() reuslt=" + response.body().string());
+            }
+        });
+
+
 
         AsyncHttpClient client = new AsyncHttpClient();
 
