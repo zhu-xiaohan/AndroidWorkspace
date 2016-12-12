@@ -24,4 +24,30 @@
         android:text="stop service"
         android:layout_alignParentRight="true"
         />
+
+    <Button
+        android:id="@+id/btn_binner_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start service"
+        android:layout_centerVertical="true"
+        />
+
+    <Button
+        android:id="@+id/btn_binner_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop service"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_resullt"
+        android:text="我在测试"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_alignParentBottom="true"
+        />
 </RelativeLayout>

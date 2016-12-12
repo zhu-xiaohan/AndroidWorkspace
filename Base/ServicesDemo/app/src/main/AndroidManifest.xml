@@ -22,6 +22,13 @@
                 <action android:name="myservice"/>
             </intent-filter>
         </service>
+
+        <service android:name=".MyBinderService">
+
+            <intent-filter>
+                <action android:name="mybinderservice"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
