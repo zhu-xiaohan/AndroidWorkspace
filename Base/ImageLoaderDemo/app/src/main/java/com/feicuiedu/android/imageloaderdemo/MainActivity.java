@@ -230,6 +230,9 @@ public class MainActivity extends AppCompatActivity {
                 list = gson.fromJson(dataStr, new TypeToken<List<Map<String, String>>>() {
                 }.getType());
 
+                String str = gson.toJson(list);
+                
+
                 ba.notifyDataSetChanged();
             }
 

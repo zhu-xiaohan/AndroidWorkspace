@@ -120,6 +120,12 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 
 	private void uploadFile() {
 		show.setVisibility(View.VISIBLE);
+
+		// okhttp xutil
+		// 使用adb命令  adb push /develop/1373721409463.jpg  /sdcard/Pictures
+		// /develop/1373721409463.jpg 本地文件絕對路徑
+		// /sdcard/Pictures  模擬器上的絕對路徑
+		// 進入到 sdk/platform-tools 路徑 使用adb指令  adb shell 就可以進入模擬器系統的命令控制臺 
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams rp = new RequestParams();
 		File file = new File(picturePath);
@@ -127,7 +133,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 			
 			if (file.isFile()) {
 				
-				rp.put("adfassdfasdf", file);
+				rp.put("abc", file);
 			}
 			else {
 				Log.d("upload", "This is not a File");
@@ -136,7 +142,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		client.post("http://192.168.1.250:8080/AppServer/SrvUpload", rp, new JsonHttpResponseHandler(){
+		client.post("http://192.168.1.250:8080/appserver/SrvUpload", rp, new JsonHttpResponseHandler(){
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -157,7 +163,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 
 				String strRtn = null;
 				try {
-					strRtn = response.getString("name");
+					strRtn = response.getString("url");
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -173,7 +179,8 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 				super.onFailure(statusCode, headers, responseString, throwable);
 				show.setVisibility(View.INVISIBLE);
 				pathView.setText(picturePath);
-				Toast.makeText(getApplicationContext(), "上传失败！",
+
+				Toast.makeText(getApplicationContext(), "上传失败！"+responseString,
 						Toast.LENGTH_LONG).show();
 			}
 
@@ -182,7 +189,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 				super.onFailure(statusCode, headers, throwable, errorResponse);
 				show.setVisibility(View.INVISIBLE);
 				pathView.setText(picturePath);
-				Toast.makeText(getApplicationContext(), "上传失败！",
+				Toast.makeText(getApplicationContext(), "上传失败！"+errorResponse.toString(),
 						Toast.LENGTH_LONG).show();
 			}
 
@@ -191,7 +198,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 				super.onFailure(statusCode, headers, throwable, errorResponse);
 				show.setVisibility(View.INVISIBLE);
 				pathView.setText(picturePath);
-				Toast.makeText(getApplicationContext(), "上传失败！",
+				Toast.makeText(getApplicationContext(), "上传失败！"+errorResponse.toString(),
 						Toast.LENGTH_LONG).show();
 			}
 		});
