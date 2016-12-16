@@ -125,7 +125,7 @@ public class FileUploadActivity extends Activity implements OnClickListener {
 		// 使用adb命令  adb push /develop/1373721409463.jpg  /sdcard/Pictures
 		// /develop/1373721409463.jpg 本地文件絕對路徑
 		// /sdcard/Pictures  模擬器上的絕對路徑
-		// 進入到 sdk/platform-tools 路徑 使用adb指令  adb shell 就可以進入模擬器系統的命令控制臺 
+		// 進入到 sdk/platform-tools 路徑 使用adb指令  adb shell 就可以進入模擬器系統的命令控制臺
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams rp = new RequestParams();
 		File file = new File(picturePath);

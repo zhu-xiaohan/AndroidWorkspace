@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.feicuiedu.android.activitymode.FristActivity">
+
+    <Button
+        android:id="@+id/thrid_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到FirstActivity"
+        android:textAllCaps="false"
+        android:onClick="toFirst"/>
+
+    <Button
+        android:id="@+id/thrid_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到SecondActivity"
+        android:textAllCaps="false"
+        android:onClick="toSecond"/>
+
+    <Button
+        android:id="@+id/third_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到ThirdActivity"
+        android:textAllCaps="false"
+        android:onClick="toSecond"/>
+
+    <Button
+        android:id="@+id/thrid_btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到ForthActivity"
+        android:textAllCaps="false"
+        android:onClick="toForth"/>
+
+    <TextView
+        android:text="This is ThirdActivity"
+        android:textColor="#0000ff"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+</LinearLayout>
