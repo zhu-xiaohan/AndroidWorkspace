@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="telecast">
+        <item>CCTV1</item>
+        <item>CCTV2</item>
+        <item>CCTV3</item>
+        <item>CCTV4</item>
+        <item>CCTV5</item>
+    </array>
+</resources>
