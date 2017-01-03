@@ -24,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_tab)
     private Button btnTab;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        // btnPullDown = findViewById(R.id.btn_pull_down);
         ButterKnife.bind(this);
     }
 
