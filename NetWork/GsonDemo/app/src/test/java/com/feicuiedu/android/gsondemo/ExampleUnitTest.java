@@ -3,8 +3,11 @@ package com.feicuiedu.android.gsondemo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -42,4 +45,32 @@ public class ExampleUnitTest {
         System.out.println(t.getStatus().getSucceed());
     }
 
+
+    @Test
+    public void test3() {
+        String str = "[1,2,3]";
+
+        List<String> list = new Gson().fromJson(str,
+                new TypeToken<List<String>>() {
+                }.getType());
+
+        System.out.println(list);
+    }
+
+    @Test
+    public void test4() {
+        String str = "[1,2,3]";
+
+        try {
+            JSONArray jsonArray = new JSONArray(str);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String s = (String) jsonArray.get(i);
+                System.out.println(s);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
